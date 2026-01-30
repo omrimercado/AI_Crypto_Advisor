@@ -11,6 +11,11 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+// Trust proxy - required for Render, Heroku, etc. (behind load balancer)
+if (config.isProduction) {
+  app.set('trust proxy', 1);
+}
+
 // Connect to MongoDB
 connectDB();
 
