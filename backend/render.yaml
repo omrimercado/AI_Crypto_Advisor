@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: ai-crypto-advisor-api
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: BCRYPT_ROUNDS
+        value: 12
+      - key: CORS_ORIGIN
+        sync: false
+      - key: COINGECKO_API_URL
+        value: https://api.coingecko.com/api/v3
+      - key: CRYPTOPANIC_API_URL
+        value: https://cryptopanic.com/api/developer/v2
+      - key: CRYPTOPANIC_API_KEY
+        sync: false
+      - key: AI_API_URL
+        value: https://openrouter.ai/api/v1
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: openai/gpt-4o-mini
