@@ -21,6 +21,7 @@ const validateEnv = () => {
 
     // External APIs (optional with fallbacks)
     COINGECKO_API_URL: url({ default: 'https://api.coingecko.com/api/v3' }),
+    COINGECKO_API_KEY: str({ default: '' }),
     CRYPTOPANIC_API_URL: url({ default: 'https://cryptopanic.com/api/developer/v2' }),
     CRYPTOPANIC_API_KEY: str({ default: '' }),
     AI_API_URL: url({ default: 'https://openrouter.ai/api/v1' }),

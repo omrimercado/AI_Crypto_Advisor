@@ -33,6 +33,7 @@ module.exports = {
   external: {
     coingecko: {
       baseUrl: env.COINGECKO_API_URL,
+      apiKey: env.COINGECKO_API_KEY,
       timeout: 10000
     },
     cryptopanic: {

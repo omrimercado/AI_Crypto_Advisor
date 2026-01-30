@@ -67,7 +67,8 @@ const getPrices = async (assets) => {
       return getFallbackPrices(assets, true);
     }
 
-    const response = await client.get('/coins/markets', {
+    // Build request config
+    const requestConfig = {
       params: {
         vs_currency: 'usd',
         ids: coinIds,
@@ -76,8 +77,16 @@ const getPrices = async (assets) => {
         page: 1,
         sparkline: false,
         price_change_percentage: '24h'
-      }
-    });
+      },
+      headers: {}
+    };
+
+    // Add API key header for demo/pro accounts
+    if (config.external.coingecko.apiKey) {
+      requestConfig.headers['x-cg-demo-api-key'] = config.external.coingecko.apiKey;
+    }
+
+    const response = await client.get('/coins/markets', requestConfig);
 
     const prices = response.data.map(coin => ({
       id: coin.id,
